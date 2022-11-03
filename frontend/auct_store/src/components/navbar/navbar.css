@@ -1,0 +1,40 @@
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    background: black;
+    align-items: center;
+}
+.navbar > div{
+    padding: 1rem 1rem 1rem 3rem;
+}
+
+.nav-items{
+    display:flex;
+    justify-content: space-between;
+    margin:0 3rem;
+}
+.nav-items > div{
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 1rem;
+}
+a:hover{
+    color: black;
+    background: white;
+    border-radius: 10%;
+}
+
+.logo a{
+    font-size: 3rem;
+    font-weight: 900;
+}
+.logo a:hover{
+    color: white;
+    background: none;
+}
