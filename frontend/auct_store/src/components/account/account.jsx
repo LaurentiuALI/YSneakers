@@ -1,11 +1,12 @@
 import React from "react";
-import Navbar from "../navbar/navbar";
+import Template from '../templates/template'
 
 const Account = () => {
   return (
     <div>
-      <Navbar />
-      <div>Account</div>
+        <Template>
+            <h1>This is Account</h1>
+        </Template>
     </div>
   );
 };

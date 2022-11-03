@@ -1,11 +1,12 @@
 import React from "react";
-import Navbar from "../navbar/navbar";
+import Template from "../templates/template";
 
 const Products = () => {
   return (
     <div>
-      <Navbar />
-      Products to be added soon...
+      <Template>
+        <h1>More products to be added...</h1>
+      </Template>
     </div>
   );
 };
