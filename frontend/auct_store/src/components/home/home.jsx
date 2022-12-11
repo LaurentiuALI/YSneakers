@@ -1,12 +1,35 @@
 import React from "react";
 import Template from "../templates/template";
+import axios from "axios";
 import "./home.css";
+import { useState, useEffect } from "react";
 
 const Home = () => {
+  const [products, getProducts] = useState("");
+  const url = "http://localhost:8000/";
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
+  const getAllProducts = () => {
+    axios
+      .get(`${url}api/v1/product`)
+      .then((response) => {
+        const allProducts = response.data[0];
+        getProducts(allProducts);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <Template>
-        <h1>This is homepage...</h1>
+        <h1>Model: {products.model}</h1>
+        <p>Brand: {products.brand}</p>
+        <p>Price: {products.starting_price} $</p>
       </Template>
     </div>
   );
