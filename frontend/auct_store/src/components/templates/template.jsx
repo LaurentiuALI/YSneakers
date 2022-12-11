@@ -1,6 +1,6 @@
-import React from 'react'
-import Navbar from '../navbar/navbar'
-import Footer from '../footer/footer'
+import React from "react";
+import Navbar from "../navbar/navbar";
+import Footer from "../footer/footer";
 
 const Template = (props) => {
   return (
@@ -9,13 +9,13 @@ const Template = (props) => {
         <Navbar />
       </header>
       <main>
-        {props.children}
+        <h1>{props.children}</h1>
       </main>
       <footer id="footer">
         <Footer />
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Template
+export default Template;
