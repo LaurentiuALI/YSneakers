@@ -9,7 +9,7 @@ const Template = (props) => {
         <Navbar />
       </header>
       <main>
-        <h1>{props.children}</h1>
+        {props.children}
       </main>
       <footer id="footer">
         <Footer />
