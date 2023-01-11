@@ -2,19 +2,21 @@ import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import "./Register.css";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
-const onFinish = async (values) => {
-  console.log(values);
-  const response = await axios
-    .post("http://localhost:8000/auth/users/", values, {
-      headers: { "Content-Type": "application/json" },
-    })
-    .then((response) => console.log(response))
-    .catch((error) => {
-      console.error("There was an error!", error);
-    });
-};
 const Register = () => {
+  const navigate = useNavigate();
+  const onFinish = async (values) => {
+    const response = await axios
+      .post("http://localhost:8000/auth/users/", values, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => navigate("/"))
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+  };
+
   return (
     <div>
       <Form
