@@ -27,9 +27,9 @@ const Home = () => {
   return (
     <div>
       <Template>
-        <h1>Model: {products.model}</h1>
-        <p>Brand: {products.brand}</p>
-        <p>Price: {products.starting_price} $</p>
+        {products != null && <h1>Model: {products.model}</h1>}
+        {products != null && <p>Brand: {products.brand}</p>}
+        {products != null && <p>Price: {products.starting_price} $</p>}
       </Template>
     </div>
   );
