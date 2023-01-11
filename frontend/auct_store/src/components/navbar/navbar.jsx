@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import "./navbar.css";
 import Searchbar from "../searchbar/searchbar";
-import { Menu, Input } from 'antd';
+import { Menu, Layout, Space } from 'antd';
+const { Header } = Layout;
 
 const items = [
   { label: <Link to="/">LOGO</Link> },
@@ -18,24 +19,11 @@ const items = [
 
 
 const Navbar = () => {
-  // <nav className="navbar">
-  //   <div className="logo">
-  //     <Link to="/">LOGO</Link>
-  //   </div>
-  //   <div className="nav-items">
-  //     <div className="searchbar">
-  //       <Searchbar />
-  //     </div>
-
-  //     <div className="products">
-  //       <Link to="/products">Browse</Link>
-  //     </div>
-  //     <div className="account">
-  //       <Link to="/account">Account</Link>
-  //     </div>
-  //   </div>
-  // </nav>
-  return <Menu mode="horizontal" items={items} />;
+  return <Header theme="white">
+    <Space>
+      <Menu theme="dark" mode="horizontal" items={items} />
+    </Space>
+  </Header>
 };
 
 export default Navbar;

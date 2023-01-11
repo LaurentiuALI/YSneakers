@@ -1,20 +1,18 @@
 import React from "react";
 import Navbar from "../navbar/navbar";
-import Footer from "../footer/footer";
+import { Layout } from 'antd';
+const { Header, Footer, Sider, Content } = Layout;
 
 const Template = (props) => {
   return (
-    <div>
-      <header>
+    <Layout>
+      <Sider theme="light" style={{ height: "100vh" }}>Sider</Sider>
+      <Layout>
         <Navbar />
-      </header>
-      <main>
         {props.children}
-      </main>
-      <footer id="footer">
-        <Footer />
-      </footer>
-    </div>
+        <Footer> Footer </Footer>
+      </Layout>
+    </Layout>
   );
 };
 

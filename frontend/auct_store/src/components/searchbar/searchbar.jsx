@@ -7,7 +7,7 @@ import "./searchbar.css";
 const onSearch = (value) => console.log(value);
 
 const Searchbar = () => <Search
-    
+
     placeholder="input search text"
     enterButton="Search"
     size="large"
