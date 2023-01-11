@@ -19,6 +19,8 @@ class Product(models.Model):
     gender = models.CharField(max_length=10, default='')
     release_year = models.CharField(max_length=4, default='')
     size = models.CharField(max_length=3, default='')
+    photos = models.FileField(default='')
     condition = models.CharField(max_length=20, default='')
     starting_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
+    
