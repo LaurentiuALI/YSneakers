@@ -10,6 +10,20 @@ const Template = (props) => {
       <Layout>
         <Navbar />
         {props.children}
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
+        <p>TEST</p>
         <Footer> Footer </Footer>
       </Layout>
     </Layout>

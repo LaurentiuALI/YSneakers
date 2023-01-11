@@ -3,6 +3,7 @@ import Template from "../templates/template";
 import axios from "axios";
 import "./home.css";
 import { useState, useEffect } from "react";
+import { FloatButton } from "antd";
 
 const Home = () => {
   const [products, getProducts] = useState("");
@@ -30,6 +31,7 @@ const Home = () => {
         {products != null && <h1>Model: {products.model}</h1>}
         {products != null && <p>Brand: {products.brand}</p>}
         {products != null && <p>Price: {products.starting_price} $</p>}
+        <FloatButton />
       </Template>
     </div>
   );
