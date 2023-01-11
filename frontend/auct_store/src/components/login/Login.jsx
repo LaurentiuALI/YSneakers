@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import "./Login.css"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -49,7 +50,13 @@ const Login = () => {
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
+
       </Form.Item>
+      <div>
+
+        <p>Don't have an account? </p>
+        <Link to="/register"> Register now</Link>
+      </div>
     </Form>
   );
 };

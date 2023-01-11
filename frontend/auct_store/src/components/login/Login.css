@@ -1,0 +1,18 @@
+div {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div a {
+    /* align it with the text on its left */
+    align-self: flex-start;
+    /* remove the underline */
+    margin-left: 0.25rem;
+    text-decoration: none;
+    color: #F35B04;
+}
+div a:hover{
+    color: #D44C44;
+}
