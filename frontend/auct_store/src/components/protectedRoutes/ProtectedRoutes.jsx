@@ -7,7 +7,6 @@ const ProtectedRoute = ({ children }) => {
     return children;
   }
   if (!session) {
-    console.log("im here?");
     return <Navigate to="/" />;
   }
 };
