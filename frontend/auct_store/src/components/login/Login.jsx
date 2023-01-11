@@ -1,21 +1,23 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const onFinish = async (values) => {
     const response = await axios
       .post("http://localhost:8000/auth/jwt/create/", values, {
         headers: { "Content-Type": "application/json" },
       })
-      .then((response) => console.log(response))
-      .catch((error) => {
-        console.error("There was an error!", error);
+      .then((response) => {
+        sessionStorage.setItem("user", JSON.stringify(response.data));
+        navigate("/home", { replace: true });
       });
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.log("Oh no!");
   };
   return (
     <Form

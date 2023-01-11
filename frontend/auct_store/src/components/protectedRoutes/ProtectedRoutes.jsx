@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import { Navigate } from "react-router-dom";
 
-const ProtectedRoutes = () => {
-  return (
-    <div>ProtectedRoutes</div>
-  )
-}
+const ProtectedRoute = ({ children }) => {
+  const session = sessionStorage.getItem("user");
+  if (session) {
+    return children;
+  }
+  if (!session) {
+    console.log("im here?");
+    return <Navigate to="/" />;
+  }
+};
 
-export default ProtectedRoutes
+export default ProtectedRoute;
