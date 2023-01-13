@@ -1,3 +1,9 @@
-/* .ant-btn {
-    background-color: red;
+/* .ant-menu-dark.ant-menu-horizontal>.ant-menu-item:hover {
+    background: none !important;
 } */
+/* .searchbar:hover {
+    background-color: none !important;
+} */
+input.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child:hover {
+    background-color: red;
+}

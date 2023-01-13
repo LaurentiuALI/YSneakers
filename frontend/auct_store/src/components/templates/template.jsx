@@ -1,33 +1,24 @@
 import React from "react";
 import Navbar from "../navbar/navbar";
 import { Layout } from 'antd';
-const { Header, Footer, Sider, Content } = Layout;
+import "./template.css";
+const { Header, Footer, Content } = Layout;
 
 const Template = (props) => {
   return (
-    <Layout>
-      <Sider theme="light" style={{ height: "100vh" }}>Sider</Sider>
-      <Layout>
-        <Navbar />
+    <Layout style={{ height: "100vh" }}>
+
+      <Navbar />
+
+      <Content style={{ overflow: "scroll" }}>
         {props.children}
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <Footer> Footer </Footer>
-      </Layout>
+      </Content>
+
+      <Footer >YSneakers ©2023 Created by WE</Footer>
     </Layout>
   );
 };
 
 export default Template;
+
+

@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
   const onFinish = async (values) => {
+    console.log(JSON.stringify(values))
     const response = await axios
       .post("http://localhost:8000/auth/users/", values, {
         headers: { "Content-Type": "application/json" },
@@ -20,7 +21,6 @@ const Register = () => {
   return (
     <div>
       <Form
-        name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
@@ -47,6 +47,20 @@ const Register = () => {
           label="Username"
           name="name"
           rules={[{ required: true, message: "Please input your username!" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Phone number"
+          name="phone_number"
+          rules={[{ required: true, message: 'Please input your phone number!' }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Address"
+          name="address"
+          rules={[{ required: true, message: 'Please input your address!' }]}
         >
           <Input />
         </Form.Item>
@@ -87,8 +101,18 @@ const Register = () => {
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
+
         </Form.Item>
+        <Form.Item>
+          <div>
+            <p>Already have an account? </p>
+            <Link to="/login"> Login now</Link>
+          </div>
+        </Form.Item>
+
       </Form>
+
+
     </div>
   );
 };

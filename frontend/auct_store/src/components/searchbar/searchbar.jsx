@@ -1,17 +1,15 @@
 import React from 'react';
-import { Input } from 'antd';
-const { Search } = Input;
+import { Input, Button } from 'antd';
+
 import "./searchbar.css";
 
 
 const onSearch = (value) => console.log(value);
 
-const Searchbar = () => <Search
-
-    placeholder="input search text"
-    enterButton="Search"
-    size="large"
-    onSearch={onSearch}
-/>;
+const Searchbar = () =>
+    <>
+        <Input placeholder="Search" style={{ height: 10, width: 200 }} />
+        <Button type="primary" style={{ height: 40, marginLeft: '10px' }}>Search</Button>
+    </>
 
 export default Searchbar;

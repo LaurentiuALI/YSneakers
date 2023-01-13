@@ -13,7 +13,7 @@ const Login = () => {
       })
       .then((response) => {
         sessionStorage.setItem("user", JSON.stringify(response.data));
-        navigate("/home", { replace: true });
+        navigate("/", { replace: true });
       });
   };
 

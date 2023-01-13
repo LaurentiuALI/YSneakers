@@ -29,25 +29,25 @@ DEBUG = True
 # ALLOWED_HOSTS =  ["http://localhost:8000"]
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ALLOWED_ORIGINS = [
-    # 'http://localhost:8000',
+# 'http://localhost:8000',
 # ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
+    # "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    #THIRD PARTY
+    # THIRD PARTY
     "rest_framework",
     "djoser",
     "accounts",
     "django_filters",
-    "api.apps.ApiConfig",
+    "api",
     "corsheaders",
 ]
 
@@ -82,7 +82,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "auct_store.wsgi.application"
-
 
 
 # Database

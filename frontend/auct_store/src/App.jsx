@@ -7,24 +7,39 @@ import Account from "./components/account/account";
 import Register from "./components/Register/Register";
 import Login from "./components/login/Login";
 import ProtectedRoute from "./components/protectedRoutes/ProtectedRoutes";
+import AddProduct from "./components/addItem/addProduct";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
         <Route
-          path="/home"
+          path="/"
+          element={
+            <Home />
+          }
+        />
+        <Route path="/products"
           element={
             <ProtectedRoute>
-              <Home />
+              <Products />
+            </ProtectedRoute>
+          } />
+        <Route path="/account" element={
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>} />
+        <Route
+          path="/add"
+          element={
+            <ProtectedRoute>
+              <AddProduct />
             </ProtectedRoute>
           }
         />
-        <Route path="products" element={<Products />} />
-        <Route path="account" element={<Account />} />
       </Routes>
     </div>
   );

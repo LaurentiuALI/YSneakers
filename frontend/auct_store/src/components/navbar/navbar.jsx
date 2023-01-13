@@ -1,29 +1,38 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import "./navbar.css";
+import "./navbar.css";
+import { Menu, Layout, Space, Input, Button } from 'antd';
 import Searchbar from "../searchbar/searchbar";
-import { Menu, Layout, Space } from 'antd';
-const { Header } = Layout;
-
-const items = [
-  { label: <Link to="/">LOGO</Link> },
-  { label: <Searchbar /> },
-  {
-    label: <Link to="/products">Browse</Link>
-  },
-  {
-    label: <Link to="/account">Account</Link>
-  }
-];
-
+const { Header, Footer, Content } = Layout;
+import { PlusOutlined } from '@ant-design/icons';
 
 
 const Navbar = () => {
-  return <Header theme="white">
-    <Space>
-      <Menu theme="dark" mode="horizontal" items={items} />
-    </Space>
-  </Header>
+  return (
+    <Header>
+      <Menu theme="dark" mode="horizontal" className="menu" style={{ flex: "auto" }} >
+        <Menu.Item key="logo" className="logo">
+          <Link to="/">Logo</Link>
+        </Menu.Item>
+        <Menu.Item key="search">
+          <Searchbar />
+        </Menu.Item>
+        <Menu.Item key="products" className="products">
+          <Link to="/products">Products</Link>
+        </Menu.Item>
+        <Menu.Item key="account" className="account">
+          <Link to="/account">Account</Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to="/add" >
+            <Button type="primary" shape="circle">
+              <PlusOutlined />
+            </Button>
+          </Link>
+        </Menu.Item>
+      </Menu>
+    </Header >
+  );
 };
 
 export default Navbar;
