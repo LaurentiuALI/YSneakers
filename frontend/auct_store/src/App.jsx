@@ -8,6 +8,7 @@ import Register from "./components/Register/Register";
 import Login from "./components/login/Login";
 import ProtectedRoute from "./components/protectedRoutes/ProtectedRoutes";
 import AddProduct from "./components/addItem/addProduct";
+import ProductPage from "./components/productpage/productPage"
 
 function App() {
   return (
@@ -39,6 +40,10 @@ function App() {
               <AddProduct />
             </ProtectedRoute>
           }
+        />
+        <Route
+          path="/product/:id"
+          element={<ProductPage />}
         />
       </Routes>
     </div>
