@@ -1,11 +1,11 @@
 from rest_framework.response import Response
 from rest_framework import status
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter
-from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from . import serializers
 from .models import Product
+
+
+# Create your views here.
 
 
 @api_view(["GET", "POST"])

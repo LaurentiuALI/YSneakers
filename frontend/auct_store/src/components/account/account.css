@@ -1,13 +1,54 @@
+.container-account {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+}
+
 .profile-info {
+    width: 50%;
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 .edit-profile {
+    width: 50%;
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+}
+
+.OwnedProducts {
+    width: 100%;
+    height: 90%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.AccountProducts {
+    width: 100%;
+    height: 90%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    /* make text to be on the top left corner of the div */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    border: 1px solid black;
+
 }

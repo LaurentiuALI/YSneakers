@@ -4,7 +4,6 @@ import axios from "axios";
 import "./home.css";
 import { useState, useEffect } from "react";
 import ProductCard from "../productCard/productCard";
-import { Row, Col } from 'antd';
 
 const Home = () => {
   const [products, getProducts] = useState([]);

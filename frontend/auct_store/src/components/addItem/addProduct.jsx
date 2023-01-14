@@ -129,28 +129,28 @@ const AddProduct = () => {
             <br />
             <label className="form-label">Gender:</label>
             <br />
-            <input className="form-input form-radio"
+            <input className="form-radio"
                 type="radio"
                 value="male"
                 checked={gender === "male"}
                 onChange={handleGenderChange}
             />
             <label className="form-label form-radio-label">Male</label>
-            <input className="form-input form-radio"
+            <input className="form-radio"
                 type="radio"
                 value="female"
                 checked={gender === "female"}
                 onChange={handleGenderChange}
             />
             <label className="form-label form-radio-label">Female</label>
-            <input className="form-input form-radio"
+            <input className="form-radio"
                 type="radio"
                 value="unisex"
                 checked={gender === "unisex"}
                 onChange={handleGenderChange}
             />
             <label className="form-label form-radio-label">Unisex</label>
-            <input className="form-input form-radio"
+            <input className="form-radio"
                 type="radio"
                 value="child"
                 checked={gender === "child"}
