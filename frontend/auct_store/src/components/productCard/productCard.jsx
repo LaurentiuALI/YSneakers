@@ -1,4 +1,5 @@
-import React from 'react';
+import { React } from 'react';
+import { Link } from "react-router-dom";
 // import Template from '../templates/template';
 import "./productCard.css";
 
@@ -15,9 +16,14 @@ const ProductCard = ({ prod }) => {
             <p>
                 Condition: {prod.condition}
             </p>
-            <p><button>View</button></p>
+
+            <Link to={`/product/${prod.id}`}>
+                <button>
+                    View
+                </button>
+            </Link>
         </div>
-        
+
 
     )
 }
