@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "./addProduct.css"
 
 const AddProduct = () => {
     const [model, setModel] = useState("");
+    const [user, setUser] = useState("");
     const [brand, setBrand] = useState("");
     const [color, setColor] = useState("");
     const [gender, setGender] = useState("");
@@ -48,6 +49,29 @@ const AddProduct = () => {
         setStartingPrice(e.target.value);
     };
 
+    useEffect(() => {
+        const url = 'http://localhost:8000/auth/users/me';
+        const token = JSON.parse(sessionStorage.getItem('user'));
+
+        const getUser = () => {
+            axios
+
+                .get(`${url}`, {
+                    headers: {
+                        Authorization: `JWT ${token.access}`
+                    }
+                })
+
+                .then((response) => {
+                    setUser(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        };
+        getUser();
+    }, []);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = {
@@ -55,12 +79,16 @@ const AddProduct = () => {
             brand: brand,
             color: color,
             gender: gender,
-            releaseYear: releaseYear,
+            release_year: releaseYear,
             size: size,
             photos: photos,
             condition: condition,
-            startingPrice: startingPrice
+            starting_price: startingPrice,
+            current_bidder: "cineva",
+            owner: user.email
         }
+        console.log(user)
+
         axios.post('http://localhost:8000/api/v1/product/', data, {
             headers: {
                 "Content-Type": "multipart/form-data",

@@ -1,6 +1,7 @@
 from django.db import models
 import random
 import string
+from datetime import datetime, timedelta
 
 
 def generate_code():
@@ -27,4 +28,7 @@ class Product(models.Model):
     condition = models.CharField(max_length=20, default='')
     starting_price = models.DecimalField(
         max_digits=10, decimal_places=2, default=0.00)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(
+        default=datetime.now() + timedelta(hours=24))
+    owner = models.CharField(max_length=100, default='')
+    current_bidder = models.CharField(max_length=100, default='')

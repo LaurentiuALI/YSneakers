@@ -11,7 +11,6 @@ from .models import Product
 @api_view(["GET", "POST"])
 def product_list(request, format=None):
 
-
     if request.method == "GET":
         products = Product.objects.all()
         serializer = serializers.ProductSerializer(products, many=True)
@@ -24,7 +23,7 @@ def product_list(request, format=None):
         return Response(serializer.errors, status=400)
 
 
-@api_view(["GET", "PUT", "DELETE"])
+@api_view(["GET", "PUT", "DELETE", "PATCH"])
 def product_detail(request, id, format=None):
     try:
         product = Product.objects.get(pk=id)
@@ -36,6 +35,13 @@ def product_detail(request, id, format=None):
         return Response(serializer.data)
     elif request.method == "PUT":
         serializer = serializers.ProductSerializer(product, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "PATCH":
+        serializer = serializers.ProductSerializer(
+            product, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

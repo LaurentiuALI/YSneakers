@@ -1,9 +1,46 @@
-.productPage-wrapper {
+.remainingTime {
+    font-size: 20px;
+    margin-top: 15rem;
+    height: 2rem;
+}
+
+.bid-info {
+    margin-top: 5rem;
+    height: 5rem;
     display: flex;
     flex-direction: column;
 }
 
+.bid-button {
+    height: 2rem;
+    width: 20%;
+}
+
+.bid-control {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .image {
-    height: 100px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.image img {
+    height: 25rem;
     width: auto;
+
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+}
+
+.bidding {
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
 }
