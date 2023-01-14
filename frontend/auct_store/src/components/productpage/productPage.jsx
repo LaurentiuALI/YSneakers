@@ -29,6 +29,7 @@ const ProductPage = () => {
   return (
     <div className="productPage-wrapper">
       <img src={`http://localhost:8000/api/v1/product${sneaker.photos}`} className="image" alt={sneaker.model} />
+      <h1>TEST</h1>
       <h1>{sneaker.model}</h1>
       <p>Brand: {sneaker.brand}</p>
       <p>Colorway: {sneaker.color}</p>
