@@ -1,5 +1,10 @@
 .container {
+    border: 1px solid red;
+    max-height: 70%;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+
 }
 
