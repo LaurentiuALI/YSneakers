@@ -18,16 +18,16 @@ class Product(models.Model):
 
     code = models.CharField(max_length=12, unique=True,
                             default=generate_code)
-    model = models.CharField(max_length=100, default='')
-    brand = models.CharField(max_length=100, default='')
-    color = models.CharField(max_length=100, default='')
-    gender = models.CharField(max_length=10, default='')
-    release_year = models.CharField(max_length=4, default='')
-    size = models.CharField(max_length=3, default='')
+    model = models.CharField(max_length=100, blank=False)
+    brand = models.CharField(max_length=100, blank=False)
+    color = models.CharField(max_length=100, blank=False)
+    gender = models.CharField(max_length=10, blank=False)
+    release_year = models.CharField(max_length=4, blank=False)
+    size = models.CharField(max_length= 4, blank=False)
     photos = models.FileField(default="1.jpg")
-    condition = models.CharField(max_length=20, default='')
+    condition = models.CharField(max_length=20, blank=False)
     starting_price = models.DecimalField(
-        max_digits=10, decimal_places=2, default=0.00)
+        max_digits=10, decimal_places=2, blank=False)
     created_at = models.DateTimeField(
         default=datetime.now() + timedelta(hours=24))
     owner = models.CharField(max_length=100, default='')

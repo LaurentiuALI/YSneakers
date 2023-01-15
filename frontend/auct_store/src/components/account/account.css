@@ -1,17 +1,39 @@
 .profile-info {
-    width: 50%;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    /* change border color to a lighter gray */
+    padding: 20px;
+    /* add some padding to create whitespace */
+    margin: 20px;
+    /* add some margin to create whitespace */
+    background-color: white;
+    /* add a background color */
+    border-radius: 10px;
+    /* add some rounding to the border */
 }
 
 .edit-profile {
-    width: 50%;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    /* change border color to a lighter gray */
+    padding: 20px;
+    /* add some padding to create whitespace */
+    margin: 20px;
+    /* add some margin to create whitespace */
+    background-color: white;
+    /* add a background color */
+    border-radius: 10px;
+    /* add some rounding to the border */
 }
 
 .container-account {

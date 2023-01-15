@@ -14,7 +14,7 @@ const Template = (props) => {
         {props.children}
       </Content>
 
-      <Footer >YSneakers ©2023 Created by WE</Footer>
+      <Footer style={{ "align-items": "center" }}>YSneakers ©2023 Created by WE</Footer>
     </Layout>
   );
 };

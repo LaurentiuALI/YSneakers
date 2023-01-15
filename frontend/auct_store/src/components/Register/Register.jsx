@@ -14,7 +14,7 @@ const Register = () => {
       })
       .then((response) => navigate("/"))
       .catch((error) => {
-        console.error("There was an error!", error);
+        console.error(error);
       });
   };
 

@@ -1,12 +1,14 @@
-import React from "react";
+import { React, useState } from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css"
 
 const Login = () => {
+  const [error, seterror] = useState("")
   const navigate = useNavigate();
   const onFinish = async (values) => {
+
     const response = await axios
       .post("http://localhost:8000/auth/jwt/create/", values, {
         headers: { "Content-Type": "application/json" },
@@ -14,11 +16,15 @@ const Login = () => {
       .then((response) => {
         sessionStorage.setItem("user", JSON.stringify(response.data));
         navigate("/", { replace: true });
+      })
+      .catch((error) => {
+        seterror(error.response.data.detail)
       });
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Oh no!");
+    console.log(errorInfo.errorFields[0].errors[0]);
+
   };
   return (
     <Form
@@ -50,8 +56,8 @@ const Login = () => {
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
-
       </Form.Item>
+      {error != "" && <p style={{ color: 'red' }}>{error}</p>}
       <div>
 
         <p>Don't have an account? </p>

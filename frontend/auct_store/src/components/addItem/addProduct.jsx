@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./addProduct.css"
 
 const AddProduct = () => {
+    const navigate = useNavigate()
     const [model, setModel] = useState("");
     const [user, setUser] = useState("");
     const [brand, setBrand] = useState("");
     const [color, setColor] = useState("");
     const [gender, setGender] = useState("");
-    const [releaseYear, setReleaseYear] = useState("");
+    const [releaseYear, setReleaseYear] = useState("2021");
     const [size, setSize] = useState("");
     const [photos, setPhotos] = useState("");
     const [condition, setCondition] = useState("");
     const [startingPrice, setStartingPrice] = useState("");
+    const [error, seterror] = useState("")
 
     const handleModelChange = (e) => {
         setModel(e.target.value);
@@ -87,7 +90,6 @@ const AddProduct = () => {
             current_bidder: user.email,
             owner: user.email
         }
-        console.log(user)
 
         axios.post('http://localhost:8000/api/v1/product/', data, {
             headers: {
@@ -100,13 +102,14 @@ const AddProduct = () => {
             })
             .catch(error => {
                 console.log(JSON.stringify(data))
-                console.log(error);
+                seterror(Object.keys(error.response.data)[0].charAt(0).toUpperCase() + Object.keys(error.response.data)[0].slice(1) + " - " + Object.values(error.response.data)[0][0]);
             });
     }
 
 
     return (
         <form className="form-container" onSubmit={handleSubmit}>
+            <button className='form-submit-button' onClick={() => window.history.back()}>Back</button>
             <label className="form-label">Model:</label>
             <input className="form-input"
                 type="text"
@@ -193,7 +196,8 @@ const AddProduct = () => {
                 onChange={handleStartingPriceChange}
             />
             <br />
-            <button className="form-submit-button" type="submit">Submit</button>
+            {error != '' && <p style={{ color: "red" }}>{error}</p>}
+            <button className="form-submit-button" type="submit" onClick={() => window.history.back()}>Submit</button>
         </form >
     )
 }

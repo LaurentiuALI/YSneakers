@@ -139,12 +139,16 @@ const ProductPage = () => {
   const bid = async (values) => {
 
 
+    setError("");
 
-    if (bidValue > sneaker.starting_price) {
+    if (bidValue > sneaker.starting_price && sneaker.owner != user.email && sneaker.current_bidder != user.email) {
+      const date = new Date(sneaker.created_at)
+      date.setMinutes(date.getMinutes() + 1)
       await getSneaker({
         ...sneaker,
         starting_price: `${parseFloat(bidValue)}`,
         current_bidder: user.email,
+        created_at: date
       });
 
       if (id) {
@@ -161,8 +165,11 @@ const ProductPage = () => {
             console.log(error);
           });
       }
-    } else {
+    } else if (bidValue < sneaker.starting_price) {
       setError(<p style={{ color: "red" }}>Enter a bigger bid.</p>);
+    } else {
+      setError(<p style={{ color: "red" }}>Can't bid.</p>);
+
     }
 
 
