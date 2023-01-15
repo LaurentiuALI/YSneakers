@@ -145,8 +145,6 @@ const ProductPage = () => {
         ...sneaker,
         starting_price: `${parseFloat(bidValue)}`,
         current_bidder: user.email,
-
-
       });
 
       if (id) {

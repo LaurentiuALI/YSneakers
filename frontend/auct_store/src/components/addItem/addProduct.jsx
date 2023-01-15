@@ -84,7 +84,7 @@ const AddProduct = () => {
             photos: photos,
             condition: condition,
             starting_price: startingPrice,
-            current_bidder: "cineva",
+            current_bidder: user.email,
             owner: user.email
         }
         console.log(user)

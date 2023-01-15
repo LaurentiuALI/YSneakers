@@ -7,7 +7,7 @@ import ProductCard from "../productCard/productCard";
 
 const Home = () => {
   const [products, getProducts] = useState([]);
-  const url = "http://localhost:8000/";
+  const url = "http://localhost:8000/api/v1/product";
 
   useEffect(() => {
     getAllProducts();
@@ -15,7 +15,7 @@ const Home = () => {
 
   const getAllProducts = () => {
     axios
-      .get(`${url}api/v1/product`)
+      .get(`${url}`)
       .then((response) => {
         const allProducts = response.data;
         getProducts(allProducts.slice(0, 6));
@@ -28,11 +28,11 @@ const Home = () => {
 
   return (
 
-      <Template>
-          <div className="container">
-            {products != null && show}
-          </div>
-      </Template>
+    <Template>
+      <div className="container">
+        {products != null && show}
+      </div>
+    </Template>
 
   );
 };

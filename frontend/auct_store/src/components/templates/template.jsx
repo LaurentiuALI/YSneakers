@@ -1,7 +1,7 @@
 import React from "react";
+import "./template.css";
 import Navbar from "../navbar/navbar";
 import { Layout } from 'antd';
-import "./template.css";
 const { Header, Footer, Content } = Layout;
 
 const Template = (props) => {
