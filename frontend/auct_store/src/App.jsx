@@ -8,7 +8,7 @@ import Register from "./components/Register/Register";
 import Login from "./components/login/Login";
 import ProtectedRoute from "./components/protectedRoutes/ProtectedRoutes";
 import AddProduct from "./components/addItem/addProduct";
-import ProductPage from "./components/productpage/productPage"
+import ProductPage from "./components/productpage/productPage";
 
 function App() {
   return (
@@ -17,22 +17,23 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
+        <Route path="/" element={<Home />} />
         <Route
-          path="/"
-          element={
-            <Home />
-          }
-        />
-        <Route path="/products"
+          path="/products"
           element={
             <ProtectedRoute>
               <Products />
             </ProtectedRoute>
-          } />
-        <Route path="/account" element={
-          <ProtectedRoute>
-            <Account />
-          </ProtectedRoute>} />
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              <Account />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/add"
           element={
@@ -43,7 +44,11 @@ function App() {
         />
         <Route
           path="/product/:id"
-          element={<ProductPage />}
+          element={
+            <ProtectedRoute>
+              <ProductPage />
+            </ProtectedRoute>
+          }
         />
       </Routes>
     </div>
