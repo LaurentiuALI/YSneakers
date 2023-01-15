@@ -1,9 +1,12 @@
-/* .ant-menu-dark.ant-menu-horizontal>.ant-menu-item:hover {
+/* /* .ant-menu-dark.ant-menu-horizontal>.ant-menu-item:hover {
     background: none !important;
 } */
 /* .searchbar:hover {
     background-color: none !important;
 } */
-input.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child:hover {
+/* input.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child:hover {
     background-color: red;
+} */
+input {
+    min-height: 2rem;
 }

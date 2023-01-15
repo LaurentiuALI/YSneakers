@@ -99,6 +99,7 @@ const AddProduct = () => {
                 console.log(res.data);
             })
             .catch(error => {
+                console.log(JSON.stringify(data))
                 console.log(error);
             });
     }

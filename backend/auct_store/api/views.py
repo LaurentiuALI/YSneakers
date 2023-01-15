@@ -3,9 +3,31 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from . import serializers
 from .models import Product
+from django.core.mail import send_mail
+from django.http import HttpResponse
 
 
 # Create your views here.
+
+# EMAIL SENDING
+@api_view(["POST"])
+def send_email(request):
+    if request.method == 'POST':
+        data = request.data
+        recipient_email = data.get("email")
+        subject = data.get("subject")
+        message = data.get("message")
+        print(recipient_email)
+        send_mail(
+            subject,
+            message,
+            "from@example.ro",
+            [recipient_email],
+            fail_silently=False,
+        )
+        return HttpResponse('Email sent to ' + recipient_email)
+    else:
+        return HttpResponse("This view only supports POST requests.")
 
 
 @api_view(["GET", "POST"])

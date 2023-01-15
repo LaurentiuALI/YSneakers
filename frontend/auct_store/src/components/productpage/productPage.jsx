@@ -75,11 +75,31 @@ const ProductPage = () => {
   const difference = target - currentDate;
   useEffect(() => {
     if (difference < 0) {
+
+      axios
+        .post(`${url}/send_email`, {
+          'email': sneaker.current_bidder,
+          'subject': 'Congratulations!',
+          'message': `You are the highest bidder of the ${sneaker.brand} ${sneaker.model} ${sneaker.color}, ${sneaker.size}, ${sneaker.condition} with ${sneaker.starting_price}. Please send your money at the following account : [bank_account], once both you and the owner complete your responsabilities, the product will be shipped to you.
+
+          Sincerly,
+          YSneakers Team`
+        })
+      axios
+        .post(`${url}/send_email`, {
+          'email': sneaker.owner,
+          'subject': 'Congratulations!',
+          'message': `You sold ${sneaker.brand} ${sneaker.model} ${sneaker.color}, ${sneaker.size}, ${sneaker.condition} for ${sneaker.starting_price}. Please send your product at the following address : [address], once both you and the bidder complete your responsabilities, the money will be sent to you.
+
+          Sincerly,
+          YSneakers Team`
+        })
+
       axios
         .delete(`${url}/${id.id}`)
         .then((response) => {
           navigate("/", { replace: true });
-          console.log("It worked: " + response);
+          console.log(sneaker);
         })
         .catch((error) => {
           console.log(error);
@@ -92,12 +112,41 @@ const ProductPage = () => {
     return () => clearInterval(interval);
   }, [difference, id]);
 
-  const bid = (values) => {
+
+
+  const endBid = () => {
+    const date = new Date()
+    date.setSeconds(date.getSeconds() + 5)
+    getSneaker({
+      ...sneaker,
+      created_at: date
+    });
+
+    if (id) {
+      axios
+        .patch(`${url}/${id.id}`, {
+          created_at: date
+        })
+        .then((response) => {
+          console.log("It worked: " + response);
+        })
+        .catch((error) => {
+          console.log(JSON.stringify(sneaker));
+          console.log(error);
+        });
+    }
+  }
+  const bid = async (values) => {
+
+
+
     if (bidValue > sneaker.starting_price) {
-      getSneaker({
+      await getSneaker({
         ...sneaker,
         starting_price: `${parseFloat(bidValue)}`,
         current_bidder: user.email,
+
+
       });
 
       if (id) {
@@ -117,6 +166,8 @@ const ProductPage = () => {
     } else {
       setError(<p style={{ color: "red" }}>Enter a bigger bid.</p>);
     }
+
+
   };
 
   return (
@@ -143,6 +194,9 @@ const ProductPage = () => {
             {error}
             <Button type="primary" onClick={bid}>
               Bid
+            </Button>
+            <Button type="primary" onClick={endBid}>
+              End Bid
             </Button>
           </div>
           <Button style={{ marginBottom: "2rem" }}>

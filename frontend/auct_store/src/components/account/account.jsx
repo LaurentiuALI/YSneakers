@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom"
 import axios from 'axios';
 import './account.css';
 
 const AccountPage = () => {
+
+  const navigate = useNavigate()
+
   const [user, setUser] = useState({});
   const [newEmail, setNewEmail] = useState('');
   const [newAddress, setNewAddress] = useState('');
@@ -35,22 +39,28 @@ const AccountPage = () => {
 
   return (
     <div className='container-account'>
+
       <div>
         <div className='profile-info'>
+          <button className='BackButton' onClick={() => window.history.back()}>Back</button>
+          <button className='logout' onClick={() => {
+            sessionStorage.clear()
+            navigate("/login", { replace: true })
+          }}>Logout</button>
           <h1>My Account</h1>
           <p>Name: {user.name}</p>
           <p>Email: {user.email}</p>
           <p>Address: {user.address}</p>
-          <p>Phone: {user.phone}</p>
+          <p>Phone: {user.phone_number}</p>
         </div>
         <div className='edit-profile'>
           <h1>Edit Profile</h1>
-          <p>Email: <input type='text' value={newEmail} onChange={(e) => setNewEmail(e.target.value)} /></p>
+          {/* <p>Email: <input type='text' value={newEmail} onChange={(e) => setNewEmail(e.target.value)} /></p> */}
           <p>Address: <input type='text' value={newAddress} onChange={(e) => setNewAddress(e.target.value)} /></p>
           <p>Phone: <input type='text' value={newPhone} onChange={(e) => setNewPhone(e.target.value)} /></p>
 
           <button onClick={() => {
-            const new_user = { email: newEmail, address: newAddress, phone: newPhone }
+            const new_user = { address: newAddress, phone: newPhone }
             console.log(JSON.stringify(new_user))
             console.log(`JWT ${token.access}`)
             axios
