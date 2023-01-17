@@ -2,13 +2,12 @@ import { React, useState } from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css"
+import "./Login.css";
 
 const Login = () => {
-  const [error, seterror] = useState("")
+  const [error, seterror] = useState("");
   const navigate = useNavigate();
   const onFinish = async (values) => {
-
     const response = await axios
       .post("http://localhost:8000/auth/jwt/create/", values, {
         headers: { "Content-Type": "application/json" },
@@ -18,13 +17,12 @@ const Login = () => {
         navigate("/", { replace: true });
       })
       .catch((error) => {
-        seterror(error.response.data.detail)
+        seterror(error.response.data.detail);
       });
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log(errorInfo.errorFields[0].errors[0]);
-
   };
   return (
     <Form
@@ -34,6 +32,7 @@ const Login = () => {
       initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
+      onChange={() => seterror("")}
       autoComplete="off"
     >
       <Form.Item
@@ -57,9 +56,8 @@ const Login = () => {
           Submit
         </Button>
       </Form.Item>
-      {error != "" && <p style={{ color: 'red' }}>{error}</p>}
+      {error != "" && <p style={{ color: "red" }}>{error}</p>}
       <div>
-
         <p>Don't have an account? </p>
         <Link to="/register"> Register now</Link>
       </div>

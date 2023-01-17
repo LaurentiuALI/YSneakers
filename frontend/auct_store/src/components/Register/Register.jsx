@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import "./Register.css";
 import axios from "axios";
@@ -6,15 +6,17 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
+
+  const [error, seterror] = useState("");
   const onFinish = async (values) => {
-    console.log(JSON.stringify(values))
+    console.log(JSON.stringify(values));
     const response = await axios
       .post("http://localhost:8000/auth/users/", values, {
         headers: { "Content-Type": "application/json" },
       })
-      .then((response) => navigate("/"))
+      .then((response) => navigate("/login"))
       .catch((error) => {
-        console.error(error);
+        seterror(error.response.data.password[0]);
       });
   };
 
@@ -25,6 +27,7 @@ const Register = () => {
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
+        onChange={() => seterror("")}
         autoComplete="off"
       >
         <Form.Item
@@ -53,14 +56,16 @@ const Register = () => {
         <Form.Item
           label="Phone number"
           name="phone_number"
-          rules={[{ required: true, message: 'Please input your phone number!' }]}
+          rules={[
+            { required: true, message: "Please input your phone number!" },
+          ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
           label="Address"
           name="address"
-          rules={[{ required: true, message: 'Please input your address!' }]}
+          rules={[{ required: true, message: "Please input your address!" }]}
         >
           <Input />
         </Form.Item>
@@ -96,12 +101,12 @@ const Register = () => {
         >
           <Input.Password />
         </Form.Item>
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
-
         </Form.Item>
         <Form.Item>
           <div>
@@ -109,10 +114,7 @@ const Register = () => {
             <Link to="/login"> Login now</Link>
           </div>
         </Form.Item>
-
       </Form>
-
-
     </div>
   );
 };

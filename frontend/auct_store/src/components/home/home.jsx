@@ -24,7 +24,7 @@ const Home = () => {
         console.log(error);
       });
   };
-  const show = products.map((product) => <ProductCard prod={product} />)
+  const show = products.map((product) => <ProductCard key ={product.id} prod={product} />)
 
   return (
 
