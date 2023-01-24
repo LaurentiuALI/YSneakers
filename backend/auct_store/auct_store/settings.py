@@ -93,8 +93,8 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-# EMAIL : laurentiuandoni2001@gmail.com
-# PASS : albctquwbtkblddm
+# EMAIL :
+# PASS :
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
